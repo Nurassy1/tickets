@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coding Conf 2025</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen flex items-center justify-center px-4 bg-gray-800">
+
+  <section id="form-section" class="w-full max-w-md space-y-6">
+    <div class="text-center">
+      <img src="assets/images/logo-full.svg" alt="Logo" class="mx-auto mb-2 w-[150px]">
+      <h1 class="text-2xl mt-2 font-bold">Your Journey to Coding Conf 2025 Starts Here!</h1>
+      <p class="text-sm text-gray-400 mt-2">Secure your spot at next year's biggest coding conference.</p>
+    </div>
+
+    <form id="ticketForm" class="space-y-4">
+      <label class="block">
+        <div class="border-2 border-dashed border-gray-500 rounded-md p-4 text-center">
+          <input type="file" id="avatarInput" accept="image/*" class="hidden">
+          <div id="avatarPreview" class="cursor-pointer text-sm text-gray-400">Drag and drop or click to upload</div>
+        </div>
+        <p class="text-xs text-gray-500 mt-1">Upload your photo (JPG or PNG, max size: 500KB)</p>
+      </label>
+
+      <input type="text" id="fullName" placeholder="Full Name" required
+        class="w-full px-4 py-2 rounded bg-white/10 border border-pink-400 focus:outline-none">
+      <input type="email" id="email" placeholder="Email Address" required
+        class="w-full px-4 py-2 rounded bg-white/10 border border-pink-400 focus:outline-none">
+      <input type="text" id="github" placeholder="@GitHub Username" required
+        class="w-full px-4 py-2 rounded bg-white/10 border border-pink-400 focus:outline-none">
+
+      <button type="submit" class="w-full bg-orange-400 text-white py-2 rounded transition">Generate My
+        Ticket</button>
+    </form>
+  </section>
+
+  <section id="ticket-section" class="hidden w-full max-w-xl text-center space-y-4">
+    <div>
+      <img src="assets/images/logo-full.svg" class="mx-auto mb-2 w-[150px]">
+      <h2 class="text-3xl font-bold">Congrats, <span id="nameOutput" class="text-pink-400"></span>!</h2>
+      <p class="text-3xl">Your ticket is ready.</p>
+      <p class="text-sm">We’ve emailed your ticket to <span id="emailOutput"
+          class="text-pink-300"></span> and will send updates in the run up to the event.</p>
+    </div>
+
+    <div class="bg-gradient-to-br from-[#201343] to-[#2c1d55] rounded-xl p-6 relative">
+      <div class="text-left flex gap-2">
+        <img src="assets/images/logo-mark.svg" alt="">
+        <div class="column text-left">
+          <h2 class="text-3xl text-white">Coding Conf</h2>
+          <p class="text-sm text-gray-400">Jan 31, 2025 / Austin, TX</p>
+        </div>
+      </div>
+      <div class="flex items-center space-x-4 mt-4">
+        <img id="avatarOutput" src="assets/default-avatar.png" class="w-16 h-16 rounded-full">
+        <div class="text-left">
+          <p id="ticketName" class="font-bold text-lg"></p>
+          <p id="ticketGit" class="text-gray-300 text-sm"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const form = document.getElementById('ticketForm');
+    const formSection = document.getElementById('form-section');
+    const ticketSection = document.getElementById('ticket-section');
+
+    const fullName = document.getElementById('fullName');
+    const email = document.getElementById('email');
+    const github = document.getElementById('github');
+
+    const nameOutput = document.getElementById('nameOutput');
+    const emailOutput = document.getElementById('emailOutput');
+    const ticketName = document.getElementById('ticketName');
+    const ticketGit = document.getElementById('ticketGit');
+    const avatarInput = document.getElementById('avatarInput');
+    const avatarPreview = document.getElementById('avatarPreview');
+    const avatarOutput = document.getElementById('avatarOutput');
+
+    avatarPreview.addEventListener('click', () => avatarInput.click());
+
+    let uploadedAvatar = "";
+
+    avatarInput.addEventListener('change', function () {
+      const file = this.files[0];
+      if (file && file.size < 500000) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          uploadedAvatar = reader.result;
+          avatarPreview.innerHTML = `<img src="${uploadedAvatar}" class="w-20 h-20 rounded-full mx-auto">`;
+        };
+        reader.readAsDataURL(file);
+      } else {
+        alert('Image too large or invalid!');
+      }
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      nameOutput.textContent = fullName.value;
+      emailOutput.textContent = email.value;
+      ticketName.textContent = fullName.value;
+      ticketGit.textContent = github.value;
+      if (uploadedAvatar) {
+        avatarOutput.src = uploadedAvatar;
+      }
+
+      formSection.classList.add('hidden');
+      ticketSection.classList.remove('hidden');
+    });
+
+  </script>
+</body>
+
+</html>
