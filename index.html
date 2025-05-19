@@ -14,25 +14,37 @@
   <section id="form-section" class="w-full max-w-md space-y-6">
     <div class="text-center">
       <img src="assets/images/logo-full.svg" alt="Logo" class="mx-auto mb-2 w-[150px]">
-      <h1 class="text-2xl mt-2 font-bold">Your Journey to Coding Conf 2025 Starts Here!</h1>
+      <h1 class="text-3xl mt-2 text-white font-bold">Your Journey to Coding Conf 2025 Starts Here!</h1>
       <p class="text-sm text-gray-400 mt-2">Secure your spot at next year's biggest coding conference.</p>
     </div>
 
     <form id="ticketForm" class="space-y-4">
       <label class="block">
-        <div class="border-2 border-dashed border-gray-500 rounded-md p-4 text-center">
+        <div class="border-2 border-dashed border-gray-500 rounded-md p-10 text-center">
           <input type="file" id="avatarInput" accept="image/*" class="hidden">
           <div id="avatarPreview" class="cursor-pointer text-sm text-gray-400">Drag and drop or click to upload</div>
         </div>
         <p class="text-xs text-gray-500 mt-1">Upload your photo (JPG or PNG, max size: 500KB)</p>
       </label>
 
-      <input type="text" id="fullName" placeholder="Full Name" required
-        class="w-full px-4 py-2 rounded bg-white/10 border border-pink-400 focus:outline-none">
-      <input type="email" id="email" placeholder="Email Address" required
-        class="w-full px-4 py-2 rounded bg-white/10 border border-pink-400 focus:outline-none">
-      <input type="text" id="github" placeholder="@GitHub Username" required
-        class="w-full px-4 py-2 rounded bg-white/10 border border-pink-400 focus:outline-none">
+      <div class="mb-4">
+        <label for="fullName" class="text-xl text-white block mb-2">Full Name</label>
+        <input type="text" id="fullName" placeholder="Enter a Name" required
+          class="w-full px-4 py-2 rounded bg-white/10 border border-pink-200 focus:outline-none">
+      </div>
+
+      <div class="mb-4">
+        <label for="email" class="text-xl text-white block mb-2">Email Address</label>
+        <input type="email" id="email" placeholder="example@gmail.com" required
+          class="w-full px-4 py-2 rounded bg-white/10 border border-pink-200 focus:outline-none">
+      </div>
+
+      <div class="mb-4">
+        <label for="github" class="text-xl text-white block mb-2">GitHub Username</label>
+        <input type="text" id="github" placeholder="@yourusername" required
+          class="w-full px-4 py-2 rounded bg-white/10 border border-pink-200 focus:outline-none">
+      </div>
+
 
       <button type="submit" class="w-full bg-orange-400 text-white py-2 rounded transition">Generate My
         Ticket</button>
@@ -42,13 +54,13 @@
   <section id="ticket-section" class="hidden w-full max-w-xl text-center space-y-4">
     <div>
       <img src="assets/images/logo-full.svg" class="mx-auto mb-2 w-[150px]">
-      <h2 class="text-3xl font-bold">Congrats, <span id="nameOutput" class="text-pink-400"></span>!</h2>
-      <p class="text-3xl">Your ticket is ready.</p>
-      <p class="text-sm">We’ve emailed your ticket to <span id="emailOutput"
-          class="text-pink-300"></span> and will send updates in the run up to the event.</p>
+      <h2 class="text-3xl font-bold text-white">Congrats, <span id="nameOutput" class="text-pink-400"></span>!</h2>
+      <p class="text-3xl text-white">Your ticket is ready.</p>
+      <p class="text-lg text-gray-300">We’ve emailed your ticket to <span id="emailOutput" class="text-pink-300"></span> and will send
+        updates in the run up to the event.</p>
     </div>
 
-    <div class="bg-gradient-to-br from-[#201343] to-[#2c1d55] rounded-xl p-6 relative">
+    <div style="background-image: url(assets/images/pattern-ticket.svg);background-size: cover;" class="min-h-[268px] p-6 flex flex-col justify-between">
       <div class="text-left flex gap-2">
         <img src="assets/images/logo-mark.svg" alt="">
         <div class="column text-left">
@@ -59,7 +71,7 @@
       <div class="flex items-center space-x-4 mt-4">
         <img id="avatarOutput" src="assets/default-avatar.png" class="w-16 h-16 rounded-full">
         <div class="text-left">
-          <p id="ticketName" class="font-bold text-lg"></p>
+          <p id="ticketName" class="font-bold text-white text-lg"></p>
           <p id="ticketGit" class="text-gray-300 text-sm"></p>
         </div>
       </div>
